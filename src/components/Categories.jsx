@@ -18,7 +18,7 @@ const Categories = () => {
 				{categoryName.map(category => (
 					<li
 						key={category}
-						onClick={() => setActiveCategory(category)}
+						onClick={() => changeActiveCategory(category)}
 						className={activeCategory === category ? 'active' : ''}
 					>
 						{category}

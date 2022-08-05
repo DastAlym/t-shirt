@@ -1,33 +1,20 @@
-import Categories from './components/Categories'
 import Header from './components/Header'
-import Sort from './components/Sort'
 import './scss/app.scss'
-
-import TshirtBlock from './components/TshirtBlock'
-import { useEffect, useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import Cart from './pages/Cart'
+import NotFound from './pages/NotFound'
 const App = () => {
-	const [products, setProducts] = useState([])
-	useEffect(() => {
-		fetch('https://62e9292201787ec712127f67.mockapi.io/shirts')
-			.then(res => res.json())
-			.then(data => setProducts(data))
-	}, [])
-
 	return (
 		<div className='wrapper'>
 			<Header />
 			<div className='content'>
 				<div className='container'>
-					<div className='content__top'>
-						<Categories />
-						<Sort />
-					</div>
-					<h2 className='content__title'>Сhoose</h2>
-					<div className='content__items'>
-						{products.map(product => (
-							<TshirtBlock key={product.id} {...product} />
-						))}
-					</div>
+					<Routes>
+						<Route path='/' element={<Home />} />
+						<Route path='/Cart' element={<Cart />} />
+						<Route path='*' element={<NotFound />} />
+					</Routes>
 				</div>
 			</div>
 		</div>

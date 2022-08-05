@@ -33,7 +33,7 @@ const Sort = () => {
 							<li
 								onClick={() => changeItemSort(index)}
 								key={item}
-								className='selected'
+								className={select === index ? 'active' : 'select'}
 							>
 								{item}
 							</li>
