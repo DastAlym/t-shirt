@@ -1,0 +1,36 @@
+.paginateWrapper {
+	margin-top: 2.5rem;
+	ul {
+		display: flex;
+		gap: 0.8rem;
+		li {
+			padding: 1.5px;
+
+			&:global {
+				&.selected {
+					// border: 2px solid #5a00e6;
+					border-radius: 10px;
+				}
+			}
+			a {
+				font-size: 14px;
+				cursor: pointer;
+				color: #f6f6f6;
+				font-weight: 600;
+				background: #ff0064;
+				width: 50px;
+				padding: 10px 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				cursor: pointer;
+				border-radius: 10px;
+				transition-duration: 300ms;
+
+				&:hover {
+					background-color: #c4c4c4;
+				}
+			}
+		}
+	}
+}

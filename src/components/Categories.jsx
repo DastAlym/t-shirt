@@ -1,25 +1,14 @@
-import { useState } from 'react'
-const Categories = () => {
-	const [categoryName, setCategoryName] = useState([
-		'All',
-		"Men 's",
-		'Female',
-		'Childish',
-		'Box',
-		'Accessories',
-	])
-	const [activeCategory, setActiveCategory] = useState('All')
-	const changeActiveCategory = category => {
-		setActiveCategory(category)
-	}
+const Categories = ({ value, onChangeCategory }) => {
+	const categorys = ['All', "Men's", 'Female', 'Childish', 'Box', 'Accessories']
+
 	return (
 		<div className='categories'>
 			<ul>
-				{categoryName.map(category => (
+				{categorys.map((category, index) => (
 					<li
 						key={category}
-						onClick={() => changeActiveCategory(category)}
-						className={activeCategory === category ? 'active' : ''}
+						onClick={() => onChangeCategory(index)}
+						className={value === index ? 'active' : ''}
 					>
 						{category}
 					</li>

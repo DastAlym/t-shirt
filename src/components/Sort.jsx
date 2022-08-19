@@ -1,11 +1,40 @@
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setSort } from '../redux/slices/filterSlice'
 
-const Sort = () => {
+const Sort = ({ value, onChangeSort }) => {
+	const dispatch = useDispatch()
+	const sort = useSelector(state => state.filter.sort)
 	const [open, setOpen] = useState(false)
-	const [select, setSelect] = useState(0)
-	const list = ['popularity', 'by price', 'alphabetically']
-	const changeItemSort = i => {
-		setSelect(i)
+	const list = [
+		{
+			name: 'popularity ⬆️',
+			sortProperty: 'rating',
+		},
+		{
+			name: 'popularity ⬇️',
+			sortProperty: '-rating',
+		},
+		{
+			name: 'by price ⬆️',
+			sortProperty: 'price',
+		},
+		{
+			name: 'by price ⬇️',
+			sortProperty: '-price',
+		},
+		{
+			name: 'alphabetically ⬆️',
+			sortProperty: 'alphabetically',
+		},
+		{
+			name: 'alphabetically ⬇️',
+			sortProperty: '-alphabetically',
+		},
+	]
+
+	const changeItemSort = obj => {
+		dispatch(setSort(obj))
 		setOpen(false)
 	}
 	return (
@@ -24,18 +53,20 @@ const Sort = () => {
 					/>
 				</svg>
 				<b>Sorting by:</b>
-				<span onClick={() => setOpen(!open)}>{list[select]}</span>
+				<span onClick={() => setOpen(!open)}>{sort.name}</span>
 			</div>
 			{open && (
 				<div className='sort__popup'>
 					<ul>
-						{list.map((item, index) => (
+						{list.map(obj => (
 							<li
-								onClick={() => changeItemSort(index)}
-								key={item}
-								className={select === index ? 'active' : 'select'}
+								onClick={() => changeItemSort(obj)}
+								key={obj.name}
+								className={
+									sort.sortProperty === obj.sortProperty ? 'active' : 'select'
+								}
 							>
-								{item}
+								{obj.name}
 							</li>
 						))}
 					</ul>

@@ -1,0 +1,30 @@
+.searchBlock {
+	display: flex;
+	align-items: center;
+	max-width: 500px;
+	width: 100%;
+	cursor: pointer;
+	border: 1px solid #dfcdcd;
+	border-radius: 5px;
+	padding: 0 10px;
+	padding-right: 0;
+
+	svg {
+		padding-left: 5px;
+		height: 1rem;
+		width: 1rem;
+	}
+	input {
+		width: 100%;
+		padding: 0.6rem 10px;
+		border: none;
+		height: 100%;
+		font-size: 18px;
+		// font-weight: 700;
+	}
+	&::placeholder {
+		font-size: 16px;
+		font-weight: 500;
+		color: #000;
+	}
+}
